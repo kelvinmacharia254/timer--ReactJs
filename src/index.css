@@ -83,4 +83,29 @@ button:hover{
 }
 
 
+/* dialog component */
+dialog{
+  background-color: rgba(255, 116, 116);
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+#modal-div{
+  display: flex;
+  flex-direction: column;
+}
+
+#modal-x-button{
+  padding: revert;
+  margin-left: revert;
+  font-size: revert;
+  width: revert;
+  border-radius: revert;
+  text-align: center;
+  align-self: flex-end;
+}
+
+::backdrop{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 
