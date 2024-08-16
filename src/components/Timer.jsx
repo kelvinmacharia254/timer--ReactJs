@@ -11,7 +11,9 @@ export default function Timer() {
     const [timerStarted, setTimerStarted] = useState(false)
     const [lapTimes, setLapTimes] = useState([])
     const [timerIsRunning, setTimerIsRunning] = useState(false)
+
     const formattedTime = formatTime(time)
+
     function handleTimer(buttonIdentifier){
         if(!timerRef.current){ // if no timer is running
             if (buttonIdentifier === 'Start') {
@@ -25,7 +27,7 @@ export default function Timer() {
             }else{
                 console.log(`Timer resumed: ${timerRef.current}`)
                 timerRef.current = setInterval(()=>{
-                setTime((prevTime)=>prevTime+1000)
+                setTime((prevTime)=>prevTime+1)
                 },1000)
                 updateButtonText('Stop')
                 setTimerIsRunning(true)
@@ -67,7 +69,9 @@ export default function Timer() {
 
     }
 
-    console.log(`Lap time: ${lapTimes}`)
+    // console.log(`Lap time: ${lapTimes}`)
+    console.log(time)
+    console.log(formattedTime)
 
     return(
         <>
