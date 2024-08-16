@@ -2,6 +2,8 @@
 
 ### Basic functionality
 An infinite timer that can be stopped, resumed and reset.
+We can also lap at any given time and lap logged on to a table.
+
 
 ### React concepts
 1. Component.
