@@ -38,9 +38,11 @@ export default function Modal({open, onClose, onCancel, onConfirm}) {
         <div id="modal-div">
             <button id="modal-x-button" onClick={onCancel}>X</button>
             <p>Are you sure you want to reset timer?</p>
-            <progress value={modalCountDown} max={COUNTDOWN}/>
+            <div id="progress-bar-div">
+                <progress value={modalCountDown} max={COUNTDOWN}/>
+            </div>
             <div id="modal-buttons-div">
-            <button onClick={onCancel}>Cancel</button>
+                <button onClick={onCancel}>Cancel</button>
                 <button onClick={onConfirm}>Yes</button>
             </div>
         </div>

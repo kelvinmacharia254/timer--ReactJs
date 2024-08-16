@@ -6,6 +6,7 @@ export default function Timer() {
     const timerRef = useRef(null)
     const [buttonText, updateButtonText] = useState('Start')
     const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [timerStarted, setTimerStarted] = useState(false)
 
     function handleTimer(buttonIdentifier){
         if(!timerRef.current){ // if no timer is running
@@ -15,6 +16,7 @@ export default function Timer() {
                 setTime((prevTime)=>prevTime+1000)
                 },1000)
                 updateButtonText('Stop')
+                setTimerStarted(true)
             }else{
                 console.log(`Timer resumed: ${timerRef.current}`)
                 timerRef.current = setInterval(()=>{
@@ -42,6 +44,7 @@ export default function Timer() {
         timerRef.current = null
         setTime(0)
         updateButtonText('Start')
+        setTimerStarted(false)
     },[timerRef])
 
     function handleCancelModal(){
@@ -61,7 +64,7 @@ export default function Timer() {
             </div>
             <div>
                 <button onClick={() => {handleTimer(buttonText)}} value={buttonText.current}>{buttonText}</button>
-                <button onClick={handleRequestResetTimer}>Reset</button>
+                <button onClick={handleRequestResetTimer} disabled={!timerStarted}>Reset</button>
             </div>
         </>
     )
