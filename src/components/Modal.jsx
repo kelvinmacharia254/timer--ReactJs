@@ -6,19 +6,31 @@ export default function Modal({open, onClose, onCancel, onConfirm}) {
 
     const [modalCountDown,setModalCountDown ] = useState(COUNTDOWN)
 
+    /* useEffect applies after the component is rendered and only if the dependency is updated
+       the dialogRef is applied to the <dialog> element after initial render.
+       We need the component to render for the ref to refer to the <dialog> element.
+
+       Use clean up function in the useEffect hook to clear interval and timer and also reset modalCountDown state on modal closure(unmounting).
+
+       When modal renders:
+       1. Apply a ref to the <dialog> element, only then can we do anything such as showing modal(mounting) or closing the modal(unmounting).
+       2. Start progres bar
+       3. Start countdown to auto confirm
+
+     */
     useEffect(()=>{
-        // use effect applies after the component is rendered and if the dependency is updated
-        // the dialogRef is applied to the <dialog> element after initial render.
-        // We need the component to render for the ref to refer to the <dialog> element
         let interval;
         let timer;
 
         if(open){
-            dialogRef.current.showModal();
+            dialogRef.current.showModal(); // show modal
+
+            // set Interval to update progress bar
             interval = setInterval(() => {
             setModalCountDown((prevTime) => prevTime - 1000);
             }, 1000);
 
+            // set countdown to time the modal. Auto Confirm timer set if nothing is pressed
             timer = setTimeout(()=>{
                 onConfirm()
             },COUNTDOWN)
