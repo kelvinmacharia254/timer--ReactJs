@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import {useCallback, useRef, useState} from "react";
 import Modal from "./Modal.jsx";
 
 export default function Timer() {
@@ -34,17 +34,17 @@ export default function Timer() {
     function handleRequestResetTimer(){
         setModalIsOpen(true)
     }
-    function handleModalConfirm(){
+    const handleConfirmModal = useCallback(function handleConfirmModal(){
         console.log("Modal confirmed")
         setModalIsOpen(false)
-        // rest time logic
+        // reset timer logic
         clearInterval(timerRef.current)
         timerRef.current = null
         setTime(0)
         updateButtonText('Start')
-    }
+    },[timerRef])
 
-    function handleModalCancel(){
+    function handleCancelModal(){
         console.log("Modal cancelled")
         setModalIsOpen(false)
     }
@@ -53,9 +53,9 @@ export default function Timer() {
         <>
             <Modal
                 open={modalIsOpen}
-                onCancel ={handleModalCancel}
-                onConfirm={handleModalConfirm}
-                onClose={handleModalCancel}/>
+                onCancel ={handleCancelModal}
+                onConfirm={handleConfirmModal}
+                onClose={handleCancelModal}/>
             <div id="time-container">
                 <h1 id="time-head">{time / 1000}</h1>
             </div>
