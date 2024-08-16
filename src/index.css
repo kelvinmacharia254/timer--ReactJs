@@ -67,12 +67,19 @@ button{
 
 button:hover{
   background-color: #1a1515;
+  cursor: pointer;
   color: white;
 }
 
 button:disabled:hover{
   background-color: revert;
   color: revert;
+}
+button:disabled,
+button:disabled:hover{
+  opacity:1.0;
+  /*cursor: not-allowed;*/
+  background-color: #d3d3d3;
 }
 
 #time-head{

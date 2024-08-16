@@ -1,5 +1,6 @@
 import {useCallback, useRef, useState} from "react";
 import Modal from "./Modal.jsx";
+import {formatTime} from "../utils/formatTime.js";
 
 export default function Timer() {
     const [time, setTime] = useState(0)
@@ -13,7 +14,7 @@ export default function Timer() {
             if (buttonIdentifier === 'Start') {
                 console.log(`Time started: ${timerRef.current}`)
                 timerRef.current = setInterval(()=>{
-                setTime((prevTime)=>prevTime+1000)
+                setTime((prevTime)=>prevTime+1)
                 },1000)
                 updateButtonText('Stop')
                 setTimerStarted(true)
@@ -52,6 +53,8 @@ export default function Timer() {
         setModalIsOpen(false)
     }
 
+    const formattedTime = formatTime(time)
+
     return(
         <>
             <Modal
@@ -60,7 +63,7 @@ export default function Timer() {
                 onConfirm={handleConfirmModal}
                 onClose={handleCancelModal}/>
             <div id="time-container">
-                <h1 id="time-head">{time / 1000}</h1>
+                <h1 id="time-head">{formattedTime}</h1>
             </div>
             <div>
                 <button onClick={() => {handleTimer(buttonText)}} value={buttonText.current}>{buttonText}</button>
