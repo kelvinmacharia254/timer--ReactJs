@@ -126,4 +126,48 @@ dialog{
   padding: 1rem 0 1rem 0;
 }
 
+/* DisplayLapTimes container */
+#laps-table-container{
+  margin-top: 1rem;
+  max-height: 12rem;
+  overflow-y: auto;
+  }
 
+thead{
+  position: sticky;
+  top: 0;
+  /*z-index: 1;*/
+}
+
+table, th,td{
+  border-collapse: collapse;
+  /*border: 1px solid rgb(255, 0, 134);*/
+}
+
+tr{
+  border-top: 1px solid #1a1515;
+}
+
+th{
+  border-right: 1px solid #1a1515;
+}
+
+/* table typography */
+th,td{
+  letter-spacing: 2px;
+  width: 10rem;
+  text-align: center;
+  padding: 0.25rem;
+}
+
+thead tr{
+  background-color: lightgrey;
+}
+
+tbody tr:nth-child(odd){
+  background-color: lightgrey;
+}
+
+tbody tr:nth-child(even){
+  background-color: grey;
+}
