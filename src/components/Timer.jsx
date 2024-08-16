@@ -55,6 +55,7 @@ export default function Timer() {
         updateButtonText('Start')
         setTimerStarted(false)
         setLapTimes([])
+        setTimerIsRunning(false)
     },[timerRef])
 
     function handleCancelModal(){
@@ -66,7 +67,6 @@ export default function Timer() {
         if(timerIsRunning){
              setLapTimes(prevLap=>[formattedTime, ...prevLap])
         }
-
     }
 
     // console.log(`Lap time: ${lapTimes}`)
