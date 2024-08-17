@@ -2,7 +2,8 @@
 
 ### Basic functionality
 An infinite timer that can be stopped, resumed and reset.
-We can also lap at any given time and lap logged on to a table.
+We can also lap at any given time.
+Lap are logged to a table component.
 
 
 ### React concepts
